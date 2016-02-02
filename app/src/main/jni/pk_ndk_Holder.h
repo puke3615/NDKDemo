@@ -9,6 +9,14 @@ extern "C" {
 #endif
 /*
  * Class:     pk_ndk_Holder
+ * Method:    testCallJava
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_pk_ndk_Holder_testCallJava
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     pk_ndk_Holder
  * Method:    print
  * Signature: ()Ljava/lang/String;
  */
@@ -25,11 +33,19 @@ JNIEXPORT jint JNICALL Java_pk_ndk_Holder_plus
 
 /*
  * Class:     pk_ndk_Holder
- * Method:    testCallJava
- * Signature: ()I
+ * Method:    C_sub
+ * Signature: (J)J
  */
-JNIEXPORT jint JNICALL Java_pk_ndk_Holder_testCallJava
-  (JNIEnv *, jobject);
+JNIEXPORT jlong JNICALL Java_pk_ndk_Holder_C_1sub
+  (JNIEnv *, jclass, jlong);
+
+/*
+ * Class:     pk_ndk_Holder
+ * Method:    CC_sub
+ * Signature: (J)J
+ */
+JNIEXPORT jlong JNICALL Java_pk_ndk_Holder_CC_1sub
+  (JNIEnv *, jclass, jlong);
 
 #ifdef __cplusplus
 }

@@ -1,6 +1,7 @@
 package pk.ndk;
 
 
+import android.util.Log;
 import android.view.View;
 
 import java.lang.reflect.Method;
@@ -11,6 +12,7 @@ import pk.base.util.ToastUtil;
 public class MainActivity extends DebugActivity {
 
     private Holder mHolder = new Holder();
+    private final long MAX = 1000000000L;
 
     @Override
     protected Item.Builder getItems(Item.Builder builder) {
@@ -33,6 +35,30 @@ public class MainActivity extends DebugActivity {
                     @Override
                     public void onClick(View v) {
                         mHolder.testCallJava();
+                    }
+                }),
+                new Item("Java_compute", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        long cur = System.currentTimeMillis();
+                        long r = Holder.Java_sub(MAX);
+                        T(r + "\n" + String.valueOf(System.currentTimeMillis() - cur) + "毫秒");
+                    }
+                }),
+                new Item("C_compute", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        long cur = System.currentTimeMillis();
+                        long r = Holder.C_sub(MAX);
+                        T(r + "\n" + String.valueOf(System.currentTimeMillis() - cur) + "毫秒");
+                    }
+                }),
+                new Item("C++_compute", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        long cur = System.currentTimeMillis();
+                        long r = Holder.CC_sub(MAX);
+                        T(r + "\n" + String.valueOf(System.currentTimeMillis() - cur) + "毫秒");
                     }
                 }),
                 null
@@ -65,6 +91,7 @@ public class MainActivity extends DebugActivity {
 
     public static void T(Object s) {
         ToastUtil.show(s);
+        Log.i("COMPUTEZZZ", s.toString());
     }
 
 }

@@ -39,4 +39,16 @@ public class Holder {
 
     public native int plus(int a, int b);
 
+    public static long Java_sub(long max) {
+        long sum = 0;
+        for (int i = 0; i < max; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    public static native long C_sub(long max);
+
+    public static native long CC_sub(long max);
+
 }

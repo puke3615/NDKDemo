@@ -54,3 +54,13 @@ JNIEXPORT jint JNICALL Java_pk_ndk_Holder_testCallJava
 
     return -1;
 }
+
+JNIEXPORT jlong JNICALL Java_pk_ndk_Holder_C_1sub
+        (JNIEnv *env, jclass cls, jlong max) {
+    jlong sum = 0;
+    int i;
+    for (i = 0; i < max; i ++) {
+        sum += i;
+    }
+    return sum;
+}
